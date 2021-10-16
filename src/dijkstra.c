@@ -15,3 +15,28 @@ int get_smallest_in_unvisited(int *unvisited, int *shortest_distances, int n_ver
 
 	return min_dist_vertex;
 }
+
+
+void add_connections_to_shortest(int current, int *shortest_distances, int *unvisited, int **graph, int n_vertexes) {
+	for (int i = 0; i < n_vertexes; i++) {
+		if (graph[current][i] == -1 || unvisited[i] == 1) {
+			continue;
+		}
+
+		int tentative = shortest_distances[current] + graph[current][i];
+		if (tentative < shortest_distances[i] || shortest_distances[i] == -1) {
+			shortest_distances[i] = tentative;
+		}
+	}
+
+	return;
+}
+
+
+void print_arr(int *to_print, int n) {
+	for (int i = 0; i < n; i++) {
+		printf("%d,", to_print[i]);
+	}
+	printf("\n");
+}
+
