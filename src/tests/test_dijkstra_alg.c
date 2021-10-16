@@ -38,7 +38,7 @@ void print_arr_1(int *to_print, int n) {
 }
 
 void test_dijkstra_longer_graph() {
-	int **test_graph = malloc(6 * sizeof(int*));
+	int **test_graph = (int**)malloc(6 * sizeof(int*));
 
 	int test_graph_row_0[] = {-1, 1, 2, -1, -1, -1};
 	int test_graph_row_1[] = {1, -1, -1, 6, 1, -1};
