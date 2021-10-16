@@ -7,9 +7,6 @@
 
 void test_dijkstra_simple_graph() {
 	int **test_graph = (int**)malloc(3 * sizeof(int*));
-	for (int i = 0; i < 3; i++) {
-		test_graph[i] = (int*)malloc(3 * sizeof(int));
-	}
 
 	int test_graph_row_0[] = {-1, 2, 4};
 	int test_graph_row_1[] = {2, -1, 1};
