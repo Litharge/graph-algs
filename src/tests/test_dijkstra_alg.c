@@ -20,10 +20,10 @@ void test_dijkstra_simple_graph() {
 
 	// test that the shortest distance to vertex 2 is 2 + 1 = 3
 	if (dists[2] == 2 + 1) {
-		printf("test_dijkstra_simple_graph passed\n");
+		printf("test_dijkstra_simple_graph PASSED\n");
 	}
 	else {
-		printf("test_dijkstra_simple_graph failed\n");
+		printf("test_dijkstra_simple_graph FAILED\n");
 	}
 
 	free(test_graph);
@@ -59,8 +59,12 @@ void test_dijkstra_longer_graph() {
 	print_arr_1(dists, 6);
 
 	if (dists[5] == 7) {
-		printf("test_dijkstra_longer_graph passed\n");
+		printf("test_dijkstra_longer_graph PASSED\n");
 	}
+	else {
+		printf("test_dijkstra_longer_graph FAILED\n");
+	}
+
 	free(dists);
 }
 

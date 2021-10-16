@@ -9,9 +9,9 @@ void test_smallest() {
 	int smallest_result = get_smallest_in_unvisited(unvisited, shortest_distances, n_vertexes);
 
 	if (smallest_result == 2) 
-		printf("test_smallest passed\n");
+		printf("test_smallest PASSED\n");
 	else
-		printf("test_smallest failed\n");
+		printf("test_smallest FAILED\n");
 }
 
 void test_skips_visited() {
@@ -22,9 +22,9 @@ void test_skips_visited() {
 	int smallest_result = get_smallest_in_unvisited(unvisited, shortest_distances, n_vertexes);
 
 	if (smallest_result == 2) 
-		printf("test_skips_visited passed\n");
+		printf("test_skips_visited PASSED\n");
 	else
-		printf("test_skips_visited failed\n");
+		printf("test_skips_visited FAILED\n");
 }
 
 void test_skips_not_connected() {
@@ -35,9 +35,9 @@ void test_skips_not_connected() {
 	int smallest_result = get_smallest_in_unvisited(unvisited, shortest_distances, n_vertexes);
 
 	if (smallest_result == 3) 
-		printf("test_skips_not_connected passed\n");
+		printf("test_skips_not_connected PASSED\n");
 	else
-		printf("test_skips_not_connected failed\n");
+		printf("test_skips_not_connected FAILED\n");
 }
 
 int main(int argc, char **argv) {
