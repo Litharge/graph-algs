@@ -61,6 +61,7 @@ void test_dijkstra_longer_graph() {
 	if (dists[5] == 7) {
 		printf("test_dijkstra_longer_graph passed\n");
 	}
+	free(dists);
 }
 
 
