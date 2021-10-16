@@ -29,6 +29,8 @@ void test_dijkstra_simple_graph() {
 		printf("test_dijkstra_simple_graph failed\n");
 	}
 
+	free(test_graph);
+
 }
 
 int main(int argc, char **argv) {
