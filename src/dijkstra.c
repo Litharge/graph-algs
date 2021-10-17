@@ -93,7 +93,6 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 	for (int i = 0; i < n_vertexes; i++)
 		result.shortest_distances[i] = -1;
 
-
 	// unvisited[i] holding 0 for vertex i unvisited, 1 visited
 	int *unvisited = calloc(n_vertexes, sizeof(int));
 
@@ -105,9 +104,6 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 
 	while(1) {
 		int current = get_smallest_in_unvisited(unvisited, result.shortest_distances, n_vertexes);
-		printf("current: %d\n", current);
-		print_arr(unvisited, n_vertexes);
-		print_arr(result.shortest_distances, n_vertexes);
 
 		add_connections_to_shortest(current, result.shortest_distances, prev_vertexes, unvisited, graph, n_vertexes);
 
@@ -115,8 +111,6 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 
 		if (unvisited[target] == 1) {
 			free(unvisited);
-			printf("prev vertexes: \n");
-			print_arr(prev_vertexes, 6);
 			result.path = produce_path_from_prev_vertexes(prev_vertexes, target);
 			return result;
 		}
