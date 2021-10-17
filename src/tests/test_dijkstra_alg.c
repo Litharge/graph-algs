@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <dijkstra.h>
 
 
@@ -39,22 +40,42 @@ void print_arr_1(int *to_print, int n) {
 	printf("\n");
 }
 
-void test_dijkstra_longer_graph() {
+int **get_long_test_graph(){
 	int **test_graph = (int**)malloc(6 * sizeof(int*));
 
-	int test_graph_row_0[] = {-1, 1, 2, -1, -1, -1};
-	int test_graph_row_1[] = {1, -1, -1, 6, 1, -1};
-	int test_graph_row_2[] = {2, -1, -1, 4, -1, -1};
-	int test_graph_row_3[] = {-1, 6, 4, -1, -1, 1};
-	int test_graph_row_4[] = {-1, 1, -1, -1, -1, 10};
-	int test_graph_row_5[] = {-1, -1, -1, 1, 10, -1};
+	const int test_graph_row_0[6] = {-1, 1, 2, -1, -1, -1};
+	const int test_graph_row_1[6] = {1, -1, -1, 6, 1, -1};
+	const int test_graph_row_2[6] = {2, -1, -1, 4, -1, -1};
+	const int test_graph_row_3[6] = {-1, 6, 4, -1, -1, 1};
+	const int test_graph_row_4[6] = {-1, 1, -1, -1, -1, 10};
+	const int test_graph_row_5[6] = {-1, -1, -1, 1, 10, -1};
 
-	test_graph[0] = test_graph_row_0;
-	test_graph[1] = test_graph_row_1;
-	test_graph[2] = test_graph_row_2;
-	test_graph[3] = test_graph_row_3;
-	test_graph[4] = test_graph_row_4;
-	test_graph[5] = test_graph_row_5;
+	test_graph[0] = malloc(6 * sizeof(int));
+	test_graph[1] = malloc(6 * sizeof(int));
+	test_graph[2] = malloc(6 * sizeof(int));
+	test_graph[3] = malloc(6 * sizeof(int));
+	test_graph[4] = malloc(6 * sizeof(int));
+	test_graph[5] = malloc(6 * sizeof(int));
+
+	memcpy(test_graph[0], test_graph_row_0, sizeof(test_graph_row_0));
+	
+	memcpy(test_graph[1], test_graph_row_1, sizeof(test_graph_row_1));
+
+	memcpy(test_graph[2], test_graph_row_2, sizeof(test_graph_row_1));
+
+	memcpy(test_graph[3], test_graph_row_3, sizeof(test_graph_row_1));
+
+	memcpy(test_graph[4], test_graph_row_4, sizeof(test_graph_row_1));
+
+	memcpy(test_graph[5], test_graph_row_5, sizeof(test_graph_row_1));
+
+
+	return test_graph;
+}
+
+
+void test_dijkstra_longer_graph() {
+	int **test_graph = get_long_test_graph();
 
 	PathInfo test_result = dijkstra_alg(test_graph, 6, 5);
 
@@ -69,6 +90,9 @@ void test_dijkstra_longer_graph() {
 
 	free(test_result.shortest_distances);
 	free(test_result.path);
+	for (int i = 0; i < 6; i++) {
+		free(test_graph[i]);
+	}
 	free(test_graph);
 }
 
@@ -85,21 +109,7 @@ int compare_arrays(int *a, int *b, int n) {
 
 
 void test_dijkstra_path_longer_graph() {
-	int **test_graph = (int**)malloc(6 * sizeof(int*));
-
-	int test_graph_row_0[] = {-1, 1, 2, -1, -1, -1};
-	int test_graph_row_1[] = {1, -1, -1, 6, 1, -1};
-	int test_graph_row_2[] = {2, -1, -1, 4, -1, -1};
-	int test_graph_row_3[] = {-1, 6, 4, -1, -1, 1};
-	int test_graph_row_4[] = {-1, 1, -1, -1, -1, 10};
-	int test_graph_row_5[] = {-1, -1, -1, 1, 10, -1};
-
-	test_graph[0] = test_graph_row_0;
-	test_graph[1] = test_graph_row_1;
-	test_graph[2] = test_graph_row_2;
-	test_graph[3] = test_graph_row_3;
-	test_graph[4] = test_graph_row_4;
-	test_graph[5] = test_graph_row_5;
+	int **test_graph = get_long_test_graph();
 
 	PathInfo test_result = dijkstra_alg(test_graph, 6, 5);
 
@@ -119,6 +129,7 @@ void test_dijkstra_path_longer_graph() {
 	free(test_result.path);
 	free(test_graph);
 }
+
 
 int main(int argc, char **argv) {
 	printf("---In test_dijkstra_alg---\n");
