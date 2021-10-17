@@ -16,10 +16,10 @@ void test_dijkstra_simple_graph() {
 	test_graph[1] = test_graph_row_1;
 	test_graph[2] = test_graph_row_2;
 
-	int *dists = dijkstra_alg(test_graph, 3, 2);
+	PathInfo test_result = dijkstra_alg(test_graph, 3, 2);
 
 	// test that the shortest distance to vertex 2 is 2 + 1 = 3
-	if (dists[2] == 2 + 1) {
+	if (test_result.shortest_distances[2] == 2 + 1) {
 		printf("test_dijkstra_simple_graph PASSED\n");
 	}
 	else {
@@ -54,18 +54,18 @@ void test_dijkstra_longer_graph() {
 	test_graph[4] = test_graph_row_4;
 	test_graph[5] = test_graph_row_5;
 
-	int *dists = dijkstra_alg(test_graph, 6, 5);
+	PathInfo test_result = dijkstra_alg(test_graph, 6, 5);
 
-	print_arr_1(dists, 6);
+	print_arr_1(test_result.shortest_distances, 6);
 
-	if (dists[5] == 7) {
+	if (test_result.shortest_distances[5] == 7) {
 		printf("test_dijkstra_longer_graph PASSED\n");
 	}
 	else {
 		printf("test_dijkstra_longer_graph FAILED\n");
 	}
 
-	free(dists);
+	free(test_result.shortest_distances);
 }
 
 
