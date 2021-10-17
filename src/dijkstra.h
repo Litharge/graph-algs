@@ -1,7 +1,15 @@
 #ifndef DIJKSTRA_H_
 #define DIJKSTRA_H_
 
-int * dijkstra_alg(int **graph, int n_vertexes, int target);
+typedef struct PathInfo {
+	int *shortest_distances;
+	int *prev_nodes;
+	int path_length;
+} PathInfo;
+
+
+
+PathInfo dijkstra_alg(int **graph, int n_vertexes, int target);
 
 int get_smallest_in_unvisited(int *unvisited, int *shortest_distances, int n_vertexes);
 
