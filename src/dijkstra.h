@@ -3,7 +3,7 @@
 
 typedef struct PathInfo {
 	int *shortest_distances;
-	int *prev_nodes;
+	int *path;
 	int path_length;
 } PathInfo;
 
