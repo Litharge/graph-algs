@@ -26,6 +26,7 @@ void test_dijkstra_simple_graph() {
 		printf("test_dijkstra_simple_graph FAILED\n");
 	}
 
+	free(test_result.shortest_distances);
 	free(test_graph);
 
 }
@@ -66,6 +67,7 @@ void test_dijkstra_longer_graph() {
 	}
 
 	free(test_result.shortest_distances);
+	free(test_graph);
 }
 
 
