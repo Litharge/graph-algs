@@ -29,6 +29,7 @@ void test_dijkstra_simple_graph() {
 
 	free(test_result.shortest_distances);
 	free(test_result.path);
+
 	free(test_graph);
 
 }
@@ -127,6 +128,10 @@ void test_dijkstra_path_longer_graph() {
 
 	free(test_result.shortest_distances);
 	free(test_result.path);
+
+	for (int i = 0; i < 6; i++) {
+		free(test_graph[i]);
+	}
 	free(test_graph);
 }
 
