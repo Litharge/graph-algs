@@ -41,6 +41,9 @@ void print_arr_1(int *to_print, int n) {
 	printf("\n");
 }
 
+// generate a longer graph
+// matrix rows are written as literals for brevity, which are then copied over 
+// so the data is on the heap
 int **get_long_test_graph(){
 	int **test_graph = (int**)malloc(6 * sizeof(int*));
 
