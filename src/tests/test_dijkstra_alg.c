@@ -33,7 +33,7 @@ void test_dijkstra_simple_graph() {
 
 }
 
-void print_arr_1(int *to_print, int n) {
+void print_arr(int *to_print, int n) {
 	for (int i = 0; i < n; i++) {
 		printf("%d,", to_print[i]);
 	}
@@ -82,7 +82,7 @@ void test_dijkstra_longer_graph() {
 
 	PathInfo test_result = dijkstra_alg(test_graph, 6, 5);
 
-	print_arr_1(test_result.shortest_distances, 6);
+	print_arr(test_result.shortest_distances, 6);
 
 	if (test_result.shortest_distances[5] == 7) {
 		printf("test_dijkstra_longer_graph PASSED\n");
@@ -116,7 +116,7 @@ void test_dijkstra_path_longer_graph() {
 
 	PathInfo test_result = dijkstra_alg(test_graph, 6, 5);
 
-	print_arr_1(test_result.path, 4);
+	print_arr(test_result.path, 4);
 
 	int expected_path[] = {0, 2, 3, 5};
 	
