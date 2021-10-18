@@ -9,19 +9,19 @@ Place src/ in a convenient location and include dijkstra.h
 
 ## Example
 
-> #include "dijkstra.h"
-> ...
-> int **test_graph = (int**)malloc(3 * sizeof(int*));
+> #include "dijkstra.h"  
+> ...  
+> int **test_graph = (int**)malloc(3 * sizeof(int*));  
 > 
-> int test_graph_row_0[] = {-1, 2, 4};
-> int test_graph_row_1[] = {2, -1, 1};
-> int test_graph_row_2[] = {4, 1, -1};
+> int test_graph_row_0[] = {-1, 2, 4};  
+> int test_graph_row_1[] = {2, -1, 1};  
+> int test_graph_row_2[] = {4, 1, -1};  
 > 
-> test_graph[0] = test_graph_row_0;
-> test_graph[1] = test_graph_row_1;
-> test_graph[2] = test_graph_row_2;
+> test_graph[0] = test_graph_row_0;  
+> test_graph[1] = test_graph_row_1;  
+> test_graph[2] = test_graph_row_2;  
 > 
-> PathInfo test_result = dijkstra_alg(test_graph, 3, 2);
+> PathInfo test_result = dijkstra_alg(test_graph, 3, 2);  
 
 Then 
 * `test_result.path` contains
