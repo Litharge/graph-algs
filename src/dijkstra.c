@@ -35,14 +35,6 @@ void add_connections_to_shortest(int current, int *shortest_distances, int *prev
 }
 
 
-void print_arr(int *to_print, int n) {
-	for (int i = 0; i < n; i++) {
-		printf("%d,", to_print[i]);
-	}
-	printf("\n");
-}
-
-
 int *reverse_array(int *to_reverse, int n) {
 	int a = 0;
 	int b = n-1;
@@ -112,9 +104,6 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 
 			return result;
 		}
-
-
-		printf("current: %d\n", current);
 
 		add_connections_to_shortest(current, result.shortest_distances, prev_vertexes, unvisited, graph, n_vertexes);
 
