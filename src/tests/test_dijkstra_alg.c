@@ -139,11 +139,27 @@ void test_dijkstra_path_longer_graph() {
 }
 
 
+void test_dijkstra_length_longer_graph() {
+	int **test_graph = get_long_test_graph();
+
+	PathInfo path_result = dijkstra_alg(test_graph, 6, 5);
+
+	if (path_result.path_length == 7) {
+		printf("test_dijkstra_length_longer_graph PASSED\n");
+	}
+	else {
+		printf("test_dijkstra_length_longer_graph FAILED\n");
+	}
+}
+
+
+
 int main(int argc, char **argv) {
 	printf("---In test_dijkstra_alg---\n");
 	test_dijkstra_simple_graph();
 	test_dijkstra_longer_graph();
 	test_dijkstra_path_longer_graph();
+	test_dijkstra_length_longer_graph();
 
 	return 0;
 }
