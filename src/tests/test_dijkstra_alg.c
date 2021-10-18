@@ -27,8 +27,7 @@ void test_dijkstra_simple_graph() {
 		printf("test_dijkstra_simple_graph FAILED\n");
 	}
 
-	free(test_result.shortest_distances);
-	free(test_result.path);
+	free_path_info(test_result);
 
 	free(test_graph);
 
@@ -92,8 +91,8 @@ void test_dijkstra_longer_graph() {
 		printf("test_dijkstra_longer_graph FAILED\n");
 	}
 
-	free(test_result.shortest_distances);
-	free(test_result.path);
+	free_path_info(test_result);	
+
 	for (int i = 0; i < 6; i++) {
 		free(test_graph[i]);
 	}
@@ -127,10 +126,8 @@ void test_dijkstra_path_longer_graph() {
 	else {
 		printf("test_dijkstra_path_longer_graph FAILED\n");
 	}
-	
 
-	free(test_result.shortest_distances);
-	free(test_result.path);
+	free_path_info(test_result);
 
 	for (int i = 0; i < 6; i++) {
 		free(test_graph[i]);
@@ -151,8 +148,7 @@ void test_dijkstra_length_longer_graph() {
 		printf("test_dijkstra_length_longer_graph FAILED\n");
 	}
 
-	free(path_result.shortest_distances);
-	free(path_result.path);
+	free_path_info(path_result);
 
 	for (int i = 0; i < 6; i++) {
 		free(test_graph[i]);
@@ -183,8 +179,7 @@ void test_dijkstra_length_unconnected_graph() {
 		printf("test_dijkstra_length_unconnected_graph FAILED\n");
 	}
 
-	free(result.shortest_distances);
-	free(result.path);
+	free_path_info(result);
 }
 
 
