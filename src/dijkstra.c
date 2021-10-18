@@ -5,7 +5,7 @@
 
 int get_smallest_in_unvisited(int *unvisited, int *shortest_distances, int n_vertexes) {
 	int min_dist = -1;
-	int min_dist_vertex = 0;
+	int min_dist_vertex = -1;
 
 	for (int i = 0; i < n_vertexes; i++) {
 		if (unvisited[i] == 0 && (shortest_distances[i] <= min_dist || min_dist == -1) && shortest_distances[i] != -1) {
@@ -99,11 +99,25 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 	// prev_vertexes[i] holding the node previous to node i
 	int *prev_vertexes = calloc(n_vertexes, sizeof(int));
 
-	unvisited[0] = 1;
+	unvisited[0] = 0;
 	result.shortest_distances[0] = 0;
 
 	while(1) {
 		int current = get_smallest_in_unvisited(unvisited, result.shortest_distances, n_vertexes);
+
+		if (current == -1) {
+			free(unvisited);
+
+			result.path_length = -1;
+			// placeholder
+			// TODO: remove and add test for path_length==-1 in tests
+			result.path = malloc(1);
+
+			return result;
+		}
+
+
+		printf("current: %d\n", current);
 
 		add_connections_to_shortest(current, result.shortest_distances, prev_vertexes, unvisited, graph, n_vertexes);
 
