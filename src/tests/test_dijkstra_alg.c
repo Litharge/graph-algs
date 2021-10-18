@@ -153,6 +153,28 @@ void test_dijkstra_length_longer_graph() {
 }
 
 
+void test_dijkstra_length_unconnected_graph() {
+	int **test_graph = (int**)malloc(3 * sizeof(int*));
+
+	// vertex 0 is connected to vertex 1 only
+	int test_graph_row_0[] = {-1, 2, -1};
+	int test_graph_row_1[] = {2, -1, -1};
+	int test_graph_row_2[] = {-1, -1, -1};
+
+	test_graph[0] = test_graph_row_0;
+	test_graph[1] = test_graph_row_1;
+	test_graph[2] = test_graph_row_2;
+
+	PathInfo result = dijkstra_alg(test_graph, 3, 2);
+
+	if (result.path_length == -1) {
+		printf("test_dijkstra_length_unconnected_graph PASSED\n");
+	}
+	else {
+		printf("test_dijkstra_length_unconnected_graph FAILED\n");
+	}
+}
+
 
 int main(int argc, char **argv) {
 	printf("---In test_dijkstra_alg---\n");
@@ -160,6 +182,7 @@ int main(int argc, char **argv) {
 	test_dijkstra_longer_graph();
 	test_dijkstra_path_longer_graph();
 	test_dijkstra_length_longer_graph();
+	test_dijkstra_length_unconnected_graph();
 
 	return 0;
 }
