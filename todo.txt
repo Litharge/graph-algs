@@ -1,0 +1,4 @@
+* dijkstra
+	* basic implementation DONE
+	* priority queue implementation
+* A*
