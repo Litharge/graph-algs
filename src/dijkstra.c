@@ -112,6 +112,8 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 		if (unvisited[target] == 1) {
 			free(unvisited);
 			result.path = produce_path_from_prev_vertexes(prev_vertexes, target);
+
+			result.path_length = result.shortest_distances[target];
 			return result;
 		}
 	}
