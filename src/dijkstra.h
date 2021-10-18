@@ -13,4 +13,6 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target);
 
 int get_smallest_in_unvisited(int *unvisited, int *shortest_distances, int n_vertexes);
 
+void free_path_info(PathInfo to_free);
+
 #endif

@@ -132,3 +132,12 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 		}
 	}
 }
+
+
+void free_path_info(PathInfo to_free) {
+	if (to_free.path_length == -1) {
+		free(to_free.path);
+	}
+
+	free(to_free.shortest_distances);
+}
