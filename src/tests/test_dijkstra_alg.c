@@ -150,6 +150,15 @@ void test_dijkstra_length_longer_graph() {
 	else {
 		printf("test_dijkstra_length_longer_graph FAILED\n");
 	}
+
+	free(path_result.shortest_distances);
+	free(path_result.path);
+
+	for (int i = 0; i < 6; i++) {
+		free(test_graph[i]);
+	}
+	free(test_graph);
+
 }
 
 
@@ -173,6 +182,9 @@ void test_dijkstra_length_unconnected_graph() {
 	else {
 		printf("test_dijkstra_length_unconnected_graph FAILED\n");
 	}
+
+	free(result.shortest_distances);
+	free(result.path);
 }
 
 
