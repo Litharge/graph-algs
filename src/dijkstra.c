@@ -109,9 +109,6 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 			free(unvisited);
 
 			result.path_length = -1;
-			// placeholder
-			// TODO: remove and add test for path_length==-1 in tests
-			result.path = malloc(1);
 
 			return result;
 		}
@@ -135,7 +132,7 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 
 
 void free_path_info(PathInfo to_free) {
-	if (to_free.path_length == -1) {
+	if (to_free.path_length != -1) {
 		free(to_free.path);
 	}
 
