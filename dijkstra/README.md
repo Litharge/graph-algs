@@ -11,7 +11,7 @@ Place src/ in a convenient location and include dijkstra.h
 
 > #include "dijkstra.h"  
 > ...  
-> int **test_graph = (int**)malloc(3 * sizeof(int*));  
+> int \*\*test_graph = (int\*\*)malloc(3 * sizeof(int*));  
 > 
 > int test_graph_row_0[] = {-1, 2, 4};  
 > int test_graph_row_1[] = {2, -1, 1};  
