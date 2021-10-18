@@ -3,6 +3,15 @@
 #include "dijkstra.h"
 
 
+/* Function: get_smallest_in_unvisited
+ * Selects the vertex with the smallest tentative distance that is not yet visited
+ * 
+ * unvisited: array with 0 meaning unvisited, 1 meaning visited
+ * shortest_distances: tentative distances
+ * n_vertexes: total number of vertexes in the graph
+ *
+ * returns: int specifying the vertex, -1 if all vertexes are visited
+ */
 int get_smallest_in_unvisited(int *unvisited, int *shortest_distances, int n_vertexes) {
 	int min_dist = -1;
 	int min_dist_vertex = -1;
@@ -18,6 +27,17 @@ int get_smallest_in_unvisited(int *unvisited, int *shortest_distances, int n_ver
 }
 
 
+/* Function: add_connections_to_shortest
+ * Modifies the tentative distances and previous nodes when a shorter path is found to a vertex
+ *
+ * current: the vertex to recalculate distances via
+ * shortest_distances: array of tentative distances
+ * prev_vertexes: array of vertexes when prev_vertexes[i] gives the vertex previous to vertex i
+ * unvisited: array describing whether the vertex has been current before, 0 for unvisited, 1 for visited
+ * graph: martix describing problem graph
+ * n_vertexes: number of vertexes in graph
+ *
+ */
 void add_connections_to_shortest(int current, int *shortest_distances, int *prev_vertexes, int *unvisited, int **graph, int n_vertexes) {
 	for (int i = 0; i < n_vertexes; i++) {
 		if (graph[current][i] == -1 || unvisited[i] == 1) {
@@ -34,7 +54,14 @@ void add_connections_to_shortest(int current, int *shortest_distances, int *prev
 	return;
 }
 
-
+/* Function: reverse_array
+ * reverses an array
+ *
+ * to_reverse: array to reverse
+ * n: number of items in to_reverse
+ *
+ * returns: reversed array
+ */
 int *reverse_array(int *to_reverse, int n) {
 	int a = 0;
 	int b = n-1;
@@ -51,6 +78,14 @@ int *reverse_array(int *to_reverse, int n) {
 }
 
 
+/* Function: produce_path_from_prev_vertexes
+ * backtracks along prev_vertexes and reverses to generate path from 0 to target vertex
+ *
+ * prev_vertexes: array describing previous vertexes, including the actual path
+ * target_vertex: the desired end vertex
+ *
+ * returns: array containing shortest path vertexes
+ */
 int *produce_path_from_prev_vertexes(int *prev_vertexes, int target_vertex) {
 	int size = 1;
 	int *path = (int*)malloc(1 * sizeof(int));
@@ -73,9 +108,15 @@ int *produce_path_from_prev_vertexes(int *prev_vertexes, int target_vertex) {
 }
 
 
-
-
-
+/* Function: dijkstra_alg
+ * runs dijkstra's algorithm on a graph matrix, funding the shortest path from vertex 0 to a target vertex
+ *
+ * graph: matrix describing graph, with -1 denoting no connection
+ * n_vertexes: number of vertexes in the graph
+ * target: integer specifying the target vertex
+ *
+ * returns: PathInfo describing the path and giving its total length, if the path_length member variable is equal to -1, then the other member variables contents are undefiend
+ */
 PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 	PathInfo result;
 	// shortest_distances holding shortest distance to each vertex
@@ -97,6 +138,7 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 	while(1) {
 		int current = get_smallest_in_unvisited(unvisited, result.shortest_distances, n_vertexes);
 
+		// current == -1 indicates all vertexes connected to 0 are visited and that no path to the target has been found
 		if (current == -1) {
 			free(unvisited);
 
@@ -119,7 +161,11 @@ PathInfo dijkstra_alg(int **graph, int n_vertexes, int target) {
 	}
 }
 
-
+/* Function: free_path_info
+ * frees allocated memory pointed to by PathInfo members
+ *
+ * to_free: the PathInfo instance to free
+ */
 void free_path_info(PathInfo to_free) {
 	if (to_free.path_length != -1) {
 		free(to_free.path);
